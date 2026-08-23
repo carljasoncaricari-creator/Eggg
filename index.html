@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 🌷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Dancing+Script:wght@500;600;700&family=Sacramento&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Floating petals live behind everything, always on -->
+<div class="petal-field" id="petalField" aria-hidden="true"></div>
+
+<!-- ================= SCREEN 1 : CAKE ================= -->
+<section id="screen-cake" class="screen screen--active">
+
+  <div class="sprout-row" aria-hidden="true">
+    <svg viewBox="0 0 40 60" class="sprout"><path d="M20 60 V25" stroke="#7CB894" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M20 30 C10 25 8 12 20 5 C32 12 30 25 20 30Z" fill="#F8AFA6"/><path d="M20 5 L20 15 M14 9 L26 9" stroke="#FFD97D" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 40 60" class="sprout sprout--sm"><path d="M20 60 V32" stroke="#A8E6CF" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M20 36 C11 32 9 21 20 15 C31 21 29 32 20 36Z" fill="#FF8B94"/></svg>
+    <svg viewBox="0 0 40 60" class="sprout"><path d="M20 60 V25" stroke="#7CB894" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M20 30 C10 25 8 12 20 5 C32 12 30 25 20 30Z" fill="#F8AFA6"/></svg>
+  </div>
+
+  <h1 class="typewriter" id="greeting">Happy Birthday!</h1>
+  <p class="subtext">tap the cake to make a wish ✨</p>
+
+  <button class="cake-button" id="cakeButton" aria-label="Blow out the candles">
+    <svg viewBox="0 0 260 200" class="cake-svg" id="cakeSvg">
+      <!-- plate -->
+      <ellipse cx="130" cy="182" rx="105" ry="12" fill="#F1D9CE" opacity="0.6"/>
+      <!-- bottom tier -->
+      <rect x="35" y="120" width="190" height="55" rx="10" fill="#FBEAF0"/>
+      <rect x="35" y="120" width="190" height="14" rx="7" fill="#F8AFA6"/>
+      <!-- drips -->
+      <path d="M45 134 q4 14 0 20 M75 134 q4 18 0 26 M105 134 q4 12 0 18 M135 134 q4 20 0 28 M165 134 q4 14 0 20 M195 134 q4 16 0 22" stroke="#FF8B94" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.55"/>
+      <!-- top tier -->
+      <rect x="65" y="80" width="130" height="45" rx="9" fill="#FFF3E2"/>
+      <rect x="65" y="80" width="130" height="12" rx="6" fill="#A8E6CF"/>
+      <path d="M75 92 q4 12 0 17 M100 92 q4 15 0 21 M125 92 q4 10 0 15 M150 92 q4 16 0 22 M175 92 q4 12 0 17" stroke="#7CB894" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.55"/>
+      <!-- little tulip decorations -->
+      <g transform="translate(85,150)"><path d="M0 20 V0" stroke="#7CB894" stroke-width="2.5"/><path d="M0 5 C-7 2 -8 -8 0 -12 C8 -8 7 2 0 5Z" fill="#FF8B94"/></g>
+      <g transform="translate(130,155)"><path d="M0 16 V0" stroke="#7CB894" stroke-width="2.5"/><path d="M0 5 C-7 2 -8 -8 0 -12 C8 -8 7 2 0 5Z" fill="#F8AFA6"/></g>
+      <g transform="translate(175,150)"><path d="M0 20 V0" stroke="#7CB894" stroke-width="2.5"/><path d="M0 5 C-7 2 -8 -8 0 -12 C8 -8 7 2 0 5Z" fill="#FFD97D"/></g>
+
+      <!-- candles -->
+      <g class="candle" data-lit="true">
+        <rect x="94" y="55" width="7" height="26" rx="2" fill="#FFD97D"/>
+        <g class="flame-wrap"><ellipse class="flame" cx="97.5" cy="50" rx="5" ry="9" fill="#FFCB6B"/><ellipse class="flame-core" cx="97.5" cy="52" rx="2.4" ry="5" fill="#FF8B94"/></g>
+      </g>
+      <g class="candle" data-lit="true">
+        <rect x="126" y="50" width="7" height="31" rx="2" fill="#A8E6CF"/>
+        <g class="flame-wrap"><ellipse class="flame" cx="129.5" cy="45" rx="5" ry="9" fill="#FFCB6B"/><ellipse class="flame-core" cx="129.5" cy="47" rx="2.4" ry="5" fill="#FF8B94"/></g>
+      </g>
+      <g class="candle" data-lit="true">
+        <rect x="158" y="55" width="7" height="26" rx="2" fill="#F8AFA6"/>
+        <g class="flame-wrap"><ellipse class="flame" cx="161.5" cy="50" rx="5" ry="9" fill="#FFCB6B"/><ellipse class="flame-core" cx="161.5" cy="52" rx="2.4" ry="5" fill="#FF8B94"/></g>
+      </g>
+    </svg>
+    <span class="smoke" id="smoke"></span>
+  </button>
+
+  <p class="hint" id="cakeHint">tap once more when you're ready</p>
+
+  <button class="continue-btn" id="continueBtn">Continue <span class="tulip-mark">🌷</span></button>
+</section>
+
+<!-- ================= SCREEN 2 : LETTER ================= -->
+<section id="screen-letter" class="screen">
+  <h2 class="letter-heading">a little something for you</h2>
+
+  <div class="envelope-wrap" id="envelopeWrap">
+    <div class="envelope" id="envelope">
+      <div class="envelope__back"></div>
+      <div class="envelope__letter">
+        <div class="card">
+          <svg class="card__border" viewBox="0 0 400 520" preserveAspectRatio="none" aria-hidden="true">
+            <g class="corner corner--tl"><path d="M10 40 V14 a4 4 0 0 1 4-4 H40" fill="none" stroke="#A8E6CF" stroke-width="2"/></g>
+            <g class="corner corner--tr"><path d="M390 40 V14 a4 4 0 0 0 -4-4 H360" fill="none" stroke="#A8E6CF" stroke-width="2"/></g>
+            <g class="corner corner--bl"><path d="M10 480 V506 a4 4 0 0 0 4 4 H40" fill="none" stroke="#A8E6CF" stroke-width="2"/></g>
+            <g class="corner corner--br"><path d="M390 480 V506 a4 4 0 0 1 -4 4 H360" fill="none" stroke="#A8E6CF" stroke-width="2"/></g>
+          </svg>
+
+          <div class="card__tulip-band" aria-hidden="true">
+            <svg viewBox="0 0 400 40" preserveAspectRatio="none">
+              <g fill="none" stroke="#7CB894" stroke-width="1.5">
+                <path d="M0 30 Q100 10 200 30 T400 30"/>
+              </g>
+            </svg>
+          </div>
+
+          <p class="card__salutation">Dear <span contenteditable="true" class="editable" id="celebrantName" data-placeholder="Name">Name</span>,</p>
+
+          <p class="card__message" id="letterMessage" contenteditable="true" data-placeholder="Type your birthday message here...">Wishing you a year full of warmth, blooming joy, and endless happiness! May this new year of your life bloom brighter than the last, petal by petal.</p>
+
+          <p class="card__sign">With love,<br><span contenteditable="true" class="editable" id="senderName" data-placeholder="Your Name">Your Name</span></p>
+
+          <div class="card__tulip-footer" aria-hidden="true">
+            <svg viewBox="0 0 60 60"><g transform="translate(30,52)"><path d="M0 0 V-30" stroke="#7CB894" stroke-width="2.5" fill="none"/><path d="M0 -10 C-10 -14 -11 -26 0 -32 C11 -26 10 -14 0 -10Z" fill="#F8AFA6"/><path d="M-9 -6 C-16 -10 -14 2 -4 2" fill="#A8E6CF"/><path d="M9 -6 C16 -10 14 2 4 2" fill="#A8E6CF"/></g></svg>
+          </div>
+        </div>
+      </div>
+      <div class="envelope__flap"></div>
+      <div class="envelope__seal" id="envelopeSeal">
+        <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="28" fill="#FF8B94"/><g transform="translate(30,34)"><path d="M0 0 V-16" stroke="#FFF9EC" stroke-width="2" fill="none"/><path d="M0 -6 C-6 -8 -7 -15 0 -19 C7 -15 6 -8 0 -6Z" fill="#FFF9EC"/></g></svg>
+      </div>
+    </div>
+    <p class="envelope-hint" id="envelopeHint">tap the envelope to open</p>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
